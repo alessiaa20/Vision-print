@@ -14,7 +14,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 <style>
 
 /* =========================
-   RESET
+    RESET
 ========================= */
 
 *{
@@ -32,7 +32,7 @@ body{
 }
 
 /* =========================
-   BACKGROUND
+    BACKGROUND
 ========================= */
 
 body::before{
@@ -58,7 +58,7 @@ body::after{
 }
 
 /* =========================
-   SCROLLBAR
+    SCROLLBAR
 ========================= */
 
 ::-webkit-scrollbar{
@@ -71,7 +71,7 @@ body::after{
 }
 
 /* =========================
-   HEADER
+    HEADER
 ========================= */
 
 .top-bar{
@@ -126,7 +126,7 @@ body::after{
 }
 
 /* =========================
-   CART BUTTON
+    CART BUTTON
 ========================= */
 
 .cart-open-btn{
@@ -162,7 +162,7 @@ body::after{
 }
 
 /* =========================
-   HERO
+    HERO
 ========================= */
 
 .page-info{
@@ -181,7 +181,7 @@ body::after{
 }
 
 /* =========================
-   PRODUCTS
+    PRODUCTS
 ========================= */
 
 .products{
@@ -195,7 +195,7 @@ body::after{
 }
 
 /* =========================
-   PRODUCT CARD
+    PRODUCT CARD
 ========================= */
 
 .product-card{
@@ -258,7 +258,7 @@ body::after{
 }
 
 /* =========================
-   CARD BUTTONS
+    CARD BUTTONS
 ========================= */
 
 .card-buttons{
@@ -293,7 +293,7 @@ body::after{
 }
 
 /* =========================
-   CART SIDEBAR
+    CART SIDEBAR
 ========================= */
 
 .cart-sidebar{
@@ -418,7 +418,7 @@ body::after{
 }
 
 /* =========================
-   OVERLAY
+    OVERLAY
 ========================= */
 
 .cart-overlay{
@@ -437,7 +437,7 @@ body::after{
 }
 
 /* =========================
-   FOOTER
+    FOOTER
 ========================= */
 
 footer{
@@ -448,7 +448,7 @@ footer{
 }
 
 /* =========================
-   RESPONSIVE
+    RESPONSIVE
 ========================= */
 
 @media(max-width:900px){
@@ -462,6 +462,157 @@ footer{
         gap:20px;
     }
 
+}
+
+/* =======================================
+    MODERNIZE STYLING & ANIMATIONS
+======================================= */
+
+.card-qty-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-qty-wrapper label {
+    font-size: 12px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.card-qty-input {
+    width: 60px;
+    background: #1e1135;
+    border: 1px solid #a855f7;
+    color: white;
+    padding: 5px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    outline: none;
+}
+
+@keyframes bump {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.2); }
+    50% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+.bump-animation {
+    animation: bump 0.3s ease-out;
+}
+
+@keyframes modernPop {
+    0% { transform: translateY(0) scale(1); }
+    20% { transform: translateY(4px) scale(0.97); }
+    50% { transform: translateY(-15px) scale(1.03); box-shadow: 0 15px 45px rgba(168,85,247,0.6); border-color: #a855f7; }
+    80% { transform: translateY(-2px) scale(1.01); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+.product-card-active-anim {
+    animation: modernPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.flying-particle {
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg, #a855f7, #d8b4fe);
+    border-radius: 50%;
+    box-shadow: 0 0 15px #a855f7;
+    z-index: 9999;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
+
+/* =======================================
+    ADAUGAT: MODALA NOTIFICARE PERSONALIZATA
+======================================= */
+.custom-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 0, 15, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.custom-modal-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.custom-modal {
+    background: #120021;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(168, 85, 247, 0.25);
+    transform: translateY(30px) scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-modal-overlay.show .custom-modal {
+    transform: translateY(0) scale(1);
+}
+
+.custom-modal-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(45deg, #9333ea, #7e22ce);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+}
+
+.custom-modal h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.custom-modal p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.custom-modal-btn {
+    padding: 14px 35px;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(45deg, #9333ea, #7e22ce);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.custom-modal-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
 }
 
 </style>
@@ -530,6 +681,11 @@ cadouri și materiale promoționale premium.
 de la <span>0.25</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 
 <button class="buy-btn">
@@ -562,6 +718,11 @@ Comandă
 
 <div class="price">
 de la <span>24</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -598,6 +759,11 @@ Comandă
 de la <span>19</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 
 <button class="buy-btn">
@@ -630,6 +796,11 @@ Comandă
 
 <div class="price">
 de la <span>150</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -666,6 +837,11 @@ Comandă
 de la <span>89</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 
 <button class="buy-btn">
@@ -698,6 +874,11 @@ Comandă
 
 <div class="price">
 de la <span>42</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -734,6 +915,11 @@ Comandă
 de la <span>5</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 
 <button class="buy-btn">
@@ -766,6 +952,11 @@ Comandă
 
 <div class="price">
 de la <span>18</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -802,6 +993,11 @@ Comandă
 de la <span>10</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 
 <button class="buy-btn">
@@ -834,6 +1030,11 @@ Comandă
 
 <div class="price">
 de la <span>120</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -870,6 +1071,11 @@ Comandă
 de la <span>2</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 
 <button class="buy-btn">
@@ -892,7 +1098,7 @@ Comandă
 
 <div class="variant">LIFESTYLE</div>
 
-<img src="https://gomagcdn.ro/domains2/ineditsport.ro/files/product/medium/rucsac-sidney-heather-personalizabil-rsh-471397.jpg">
+<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1200&auto=format&fit=crop">
 
 <div class="product-content">
 
@@ -902,6 +1108,11 @@ Comandă
 
 <div class="price">
 de la <span>95</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -938,6 +1149,11 @@ Comandă
 de la <span>0.13</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 
 <button class="buy-btn">
@@ -970,6 +1186,11 @@ Comandă
 
 <div class="price">
 de la <span>0.60</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -1006,6 +1227,11 @@ Comandă
 de la <span>0.40</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 
 <button class="buy-btn">
@@ -1038,6 +1264,11 @@ Comandă
 
 <div class="price">
 de la <span>35</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -1074,6 +1305,11 @@ Comandă
 de la <span>15</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 
 <button class="buy-btn">
@@ -1106,6 +1342,11 @@ Comandă
 
 <div class="price">
 de la <span>20</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -1172,6 +1413,18 @@ Finalizează Comanda
 
 <div class="cart-overlay" id="cartOverlay"></div>
 
+<!-- ADAUGAT: STRUCTURA MODALA PENTRU MESAJUL DE FINALIZARE -->
+<div class="custom-modal-overlay" id="customModalOverlay">
+    <div class="custom-modal">
+        <div class="custom-modal-icon" id="customModalIcon">
+            <i class="fas fa-check"></i>
+        </div>
+        <h2 id="customModalTitle">Succes!</h2>
+        <p id="customModalMessage">Comanda a fost finalizată cu succes! Vă mulțumim!</p>
+        <button class="custom-modal-btn" id="customModalCloseBtn">Închide</button>
+    </div>
+</div>
+
 <!-- FOOTER -->
 
 <footer>
@@ -1183,7 +1436,7 @@ Finalizează Comanda
 <script>
 
 /* =========================
-   CART
+    CART
 ========================= */
 
 const cart = [];
@@ -1231,46 +1484,69 @@ closeCart.addEventListener("click", closeCartMenu);
 
 cartOverlay.addEventListener("click", closeCartMenu);
 
-/* ADD TO CART */
+/* UPGRADED: ADD TO CART WITH DYNAMIC QUANTITY & FLYING ANIMATION */
 
-const addButtons =
-document.querySelectorAll(".cart-btn");
+function setupProductButtons(btnSelector) {
+    const buttons = document.querySelectorAll(btnSelector);
+    buttons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            const card = button.closest(".product-card");
+            const name = card.querySelector("h3").textContent;
+            const price = parseFloat(card.querySelector(".price span").textContent);
+            const image = card.querySelector("img").src;
+            
+            const qtyInput = card.querySelector(".card-qty-input");
+            const quantity = parseInt(qtyInput.value) || 1;
 
-addButtons.forEach(button => {
+            addToCartCustomQty(name, price, image, quantity);
 
-    button.addEventListener("click", () => {
+            qtyInput.value = 1;
 
-        const card =
-        button.closest(".product-card");
+            card.classList.remove("product-card-active-anim");
+            void card.offsetWidth;
+            card.classList.add("product-card-active-anim");
+            setTimeout(() => card.classList.remove("product-card-active-anim"), 600);
 
-        const name =
-        card.querySelector("h3").textContent;
-
-        const price =
-        parseFloat(
-            card.querySelector(".price span")
-            .textContent
-        );
-
-        const image =
-        card.querySelector("img").src;
-
-        addToCart(name,price,image);
-
+            createFlyingParticle(e, button);
+        });
     });
+}
 
-});
+setupProductButtons(".cart-btn");
+setupProductButtons(".buy-btn");
 
-/* FUNCTION */
+function createFlyingParticle(e, clickedElement) {
+    const particle = document.createElement("div");
+    particle.classList.add("flying-particle");
+    
+    particle.style.left = `${e.clientX - 12}px`;
+    particle.style.top = `${e.clientY - 12}px`;
+    document.body.appendChild(particle);
 
-function addToCart(name,price,image){
+    const cartBtnRect = openCart.getBoundingClientRect();
+    
+    void particle.offsetWidth;
+
+    particle.style.left = `${cartBtnRect.left + cartBtnRect.width / 2 - 12}px`;
+    particle.style.top = `${cartBtnRect.top + cartBtnRect.height / 2 - 12}px`;
+    particle.style.transform = "scale(0.2)";
+    particle.style.opacity = "0";
+
+    setTimeout(() => {
+        particle.remove();
+        openCart.classList.add("bump-animation");
+        setTimeout(() => openCart.classList.remove("bump-animation"), 300);
+    }, 600);
+}
+
+function addToCartCustomQty(name, price, image, customQty){
 
     const existing =
     cart.find(item => item.name === name);
 
     if(existing){
 
-        existing.quantity++;
+        existing.quantity += customQty;
 
     }else{
 
@@ -1278,13 +1554,17 @@ function addToCart(name,price,image){
             name,
             price,
             image,
-            quantity:1
+            quantity: customQty
         });
 
     }
 
     updateCart();
 
+}
+
+function addToCart(name,price,image){
+    addToCartCustomQty(name, price, image, 1);
 }
 
 /* UPDATE */
@@ -1400,6 +1680,54 @@ function removeItem(index){
     updateCart();
 
 }
+
+/* =======================================
+    ADAUGAT: LOGICA MODALA NOTIFICARI
+======================================= */
+const customModalOverlay = document.getElementById("customModalOverlay");
+const customModalTitle = document.getElementById("customModalTitle");
+const customModalMessage = document.getElementById("customModalMessage");
+const customModalIcon = document.getElementById("customModalIcon");
+const customModalCloseBtn = document.getElementById("customModalCloseBtn");
+
+function showCustomModal(title, message, isSuccess) {
+    customModalTitle.textContent = title;
+    customModalMessage.textContent = message;
+    
+    if(isSuccess) {
+        customModalIcon.innerHTML = '<i class="fas fa-check"></i>';
+        customModalIcon.style.background = 'linear-gradient(45deg, #9333ea, #7e22ce)';
+    } else {
+        customModalIcon.innerHTML = '<i class="fas fa-exclamation"></i>';
+        customModalIcon.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
+    }
+    
+    customModalOverlay.classList.add("show");
+}
+
+customModalCloseBtn.addEventListener("click", () => {
+    customModalOverlay.classList.remove("show");
+});
+
+// Inchidere modala daca se apasa in afara ei
+customModalOverlay.addEventListener("click", (e) => {
+    if(e.target === customModalOverlay) {
+        customModalOverlay.classList.remove("show");
+    }
+});
+
+/* REFACTORIZAT: EVENT FINALIZARE CU MODALA STILIZATA */
+const checkoutBtn = document.querySelector(".checkout-btn");
+checkoutBtn.addEventListener("click", () => {
+    if (cart.length > 0) {
+        showCustomModal("Comandă Trimisă!", "Comanda dumneavoastră a fost înregistrată și finalizată cu succes. Vă mulțumim!", true);
+        cart.length = 0;
+        updateCart();
+        closeCartMenu();
+    } else {
+        showCustomModal("Coșul este gol", "Vă rugăm să adăugați cel puțin un produs în coș înainte de a finaliza comanda.", false);
+    }
+});
 
 </script>
 
