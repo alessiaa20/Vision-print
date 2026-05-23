@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vision Print | Contact</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#090014;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+nav{
+    width:90%;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 0;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:700;
+    color:#c084fc;
+}
+
+.nav-btn{
+    background:linear-gradient(45deg,#7c3aed,#a855f7);
+    border:none;
+    color:white;
+    padding:12px 22px;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:500;
+}
+
+.nav-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(168,85,247,0.45);
+}
+
+/* HERO */
+
+.hero{
+    min-height:70vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.8)),
+    url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.hero h1{
+    font-size:72px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    color:#d1d5db;
+    font-size:20px;
+    line-height:1.8;
+}
+
+/* CONTACT */
+
+.section{
+    padding:100px 8%;
+}
+
+.contact-wrapper{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+}
+
+.contact-card,
+.form-card,
+.map-card{
+    background:rgba(255,255,255,0.05);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:25px;
+
+    padding:35px;
+
+    backdrop-filter:blur(12px);
+
+    transition:0.3s;
+}
+
+.contact-card:hover,
+.form-card:hover,
+.map-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 35px rgba(168,85,247,0.22);
+}
+
+.section-title{
+    font-size:40px;
+    color:#d8b4fe;
+    margin-bottom:20px;
+}
+
+.contact-card p{
+    color:#d1d5db;
+    line-height:1.8;
+}
+
+.contact-info{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    margin-top:30px;
+}
+
+.info-box{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:18px;
+}
+
+.info-box h3{
+    color:#c084fc;
+    margin-bottom:8px;
+}
+
+.info-box p{
+    color:#d1d5db;
+}
+
+/* FORM */
+
+.contact-form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select{
+    width:100%;
+
+    padding:16px 18px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    background:rgba(255,255,255,0.05);
+
+    color:white;
+
+    outline:none;
+
+    transition:0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus{
+    border-color:#a855f7;
+    box-shadow:0 0 15px rgba(168,85,247,0.25);
+}
+
+.contact-form textarea{
+    min-height:150px;
+    resize:none;
+}
+
+.contact-form button{
+    background:linear-gradient(45deg,#7c3aed,#a855f7);
+
+    border:none;
+
+    color:white;
+
+    padding:16px;
+
+    border-radius:35px;
+
+    cursor:pointer;
+
+    font-size:16px;
+    font-weight:600;
+
+    transition:0.3s;
+}
+
+.contact-form button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px rgba(168,85,247,0.45);
+}
+
+/* MAP */
+
+.map-section{
+    margin-top:40px;
+}
+
+.map-card iframe{
+    width:100%;
+    height:450px;
+    border:none;
+    border-radius:20px;
+}
+
+.map-btn{
+    display:inline-block;
+
+    margin-top:20px;
+
+    text-decoration:none;
+
+    background:linear-gradient(45deg,#7c3aed,#a855f7);
+
+    color:white;
+
+    padding:14px 24px;
+
+    border-radius:30px;
+
+    transition:0.3s;
+}
+
+.map-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* SUCCESS POPUP */
+
+.success-popup{
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%) scale(0.7);
+
+    width:90%;
+    max-width:420px;
+
+    background:rgba(15,15,30,0.96);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:30px;
+
+    padding:40px 30px;
+
+    text-align:center;
+
+    backdrop-filter:blur(14px);
+
+    z-index:5000;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:0.4s;
+}
+
+.success-popup.active{
+    opacity:1;
+    visibility:visible;
+    transform:translate(-50%,-50%) scale(1);
+}
+
+.success-icon{
+    width:90px;
+    height:90px;
+
+    margin:auto;
+    margin-bottom:20px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(45deg,#7c3aed,#a855f7);
+
+    font-size:42px;
+
+    box-shadow:0 0 35px rgba(168,85,247,0.5);
+
+    animation:pulse 1.5s infinite;
+}
+
+.success-popup h2{
+    color:#d8b4fe;
+    margin-bottom:15px;
+    font-size:32px;
+}
+
+.success-popup p{
+    color:#d1d5db;
+    line-height:1.7;
+}
+
+.popup-close{
+    margin-top:25px;
+
+    background:linear-gradient(45deg,#7c3aed,#a855f7);
+
+    border:none;
+
+    color:white;
+
+    padding:14px 24px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:0.3s;
+}
+
+.popup-close:hover{
+    transform:translateY(-3px);
+}
+
+@keyframes pulse{
+
+    0%{
+        box-shadow:0 0 0 rgba(168,85,247,0.5);
+    }
+
+    50%{
+        box-shadow:0 0 35px rgba(168,85,247,0.9);
+    }
+
+    100%{
+        box-shadow:0 0 0 rgba(168,85,247,0.5);
+    }
+
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#777;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+
+    .contact-wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .section-title{
+        font-size:32px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <div class="logo">
+            Vision Print
+        </div>
+
+        <a href="index.html">
+            <button class="nav-btn">
+                Acasă
+            </button>
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- CONTACT -->
+
+<section class="section" id="contact">
+
+    <div class="contact-wrapper">
+
+        <!-- INFO -->
+
+        <div class="contact-card">
+
+            <h2 class="section-title">
+                Date de Contact
+            </h2>
+
+            <p>
+                Echipa Vision Print este pregătită să transforme
+                ideile tale în produse premium personalizate.
+            </p>
+
+            <div class="contact-info">
+
+                <div class="info-box">
+                    <h3>📧 Email</h3>
+                    <p>contact@visionprint.ro</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>📞 Telefon</h3>
+                    <p>+40 745 123 456</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>📍 Adresă</h3>
+                    <p>Piața Unirii, Timișoara</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🕒 Program</h3>
+                    <p>
+                        Luni - Vineri: 09:00 - 18:00
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FORM -->
+
+        <div class="form-card">
+
+            <h2 class="section-title">
+                Trimite un Mesaj
+            </h2>
+
+            <form class="contact-form">
+
+                <input type="text"
+                placeholder="Nume complet"
+                required>
+
+                <input type="email"
+                placeholder="Adresă email"
+                required>
+
+                <input type="tel"
+                placeholder="Număr de telefon"
+                required>
+
+                <select required>
+
+                    <option value="">
+                        Selectează serviciul
+                    </option>
+
+                    <option>
+                        Print Textil Premium
+                    </option>
+
+                    <option>
+                        Branding pentru Afaceri
+                    </option>
+
+                    <option>
+                        Obiecte Personalizate
+                    </option>
+
+                    <option>
+                        Design Grafic
+                    </option>
+
+                </select>
+
+                <textarea
+                placeholder="Spune-ne mai multe despre proiectul tău...">
+                </textarea>
+
+                <button type="submit">
+                    Trimite Cererea
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- MAP -->
+
+    <div class="map-section">
+
+        <div class="map-card">
+
+            <h2 class="section-title">
+                Locația Noastră
+            </h2>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2783.683177562078!2d21.22634367632327!3d45.7574971710802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47456781b7c76ba9%3A0xdf9cdca30597d91!2zUGlhyJthIFVuaXJpaSwgVGltaciZb2FyYQ!5e0!3m2!1sen!2sro!4v1779522939199!5m2!1sen!2sro"
+            allowfullscreen=""
+            loading="lazy">
+            </iframe>
+
+            <a class="map-btn"
+            href="https://maps.app.goo.gl/QDWak2D1L675g6wS9"
+            target="_blank">
+
+                Deschide în Google Maps
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SUCCESS POPUP -->
+
+<div class="success-popup" id="successPopup">
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+    <h2>
+        Cerere Trimisă!
+    </h2>
+
+    <p>
+        Mulțumim pentru mesaj! Echipa Vision Print
+        te va contacta cât mai rapid posibil.
+    </p>
+
+    <button class="popup-close"
+    onclick="closePopup()">
+
+        Super!
+
+    </button>
+
+</div>
+
+<footer>
+    © 2026 Vision Print
+</footer>
+
+<script>
+
+/* FORM EFFECT */
+
+const form =
+document.querySelector('.contact-form');
+
+form.addEventListener('submit',function(e){
+
+    e.preventDefault();
+
+    const button =
+    form.querySelector('button');
+
+    button.innerHTML =
+    'Se trimite...';
+
+    button.style.opacity = '0.8';
+
+    setTimeout(() => {
+
+        button.innerHTML =
+        '✓ Trimis';
+
+        button.style.background =
+        'linear-gradient(45deg,#22c55e,#16a34a)';
+
+        document
+        .getElementById('successPopup')
+        .classList.add('active');
+
+        form.reset();
+
+    },1400);
+
+});
+
+/* CLOSE POPUP */
+
+function closePopup(){
+
+    document
+    .getElementById('successPopup')
+    .classList.remove('active');
+
+    const button =
+    form.querySelector('button');
+
+    button.innerHTML =
+    'Trimite Cererea';
+
+    button.style.background =
+    'linear-gradient(45deg,#7c3aed,#a855f7)';
+
+}
+
+</script>
+
+</body>
+</html>

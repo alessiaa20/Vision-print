@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vision Print - Produse</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#090015;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,#7e22ce33,transparent 70%);
+    top:-250px;
+    left:-250px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,#9333ea22,transparent 70%);
+    bottom:-250px;
+    right:-250px;
+    z-index:-1;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(#9333ea,#7e22ce);
+    border-radius:20px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.top-bar{
+    width:100%;
+    padding:25px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(15px);
+    background:rgba(9,0,21,.8);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.logo{
+    font-size:3rem;
+    font-weight:800;
+}
+
+.logo span{
+    background:linear-gradient(45deg,#d8b4fe,#a855f7);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
+
+.right-actions{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.home-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 28px;
+    border:none;
+    border-radius:40px;
+    background:linear-gradient(45deg,#9333ea,#7e22ce);
+    color:white;
+    font-weight:600;
+    text-decoration:none;
+    transition:.35s;
+    box-shadow:0 0 25px rgba(168,85,247,.35);
+}
+
+.home-btn:hover{
+    transform:translateY(-4px);
+}
+
+/* =========================
+   CART BUTTON
+========================= */
+
+.cart-open-btn{
+    width:60px;
+    height:60px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(45deg,#9333ea,#7e22ce);
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    position:relative;
+    transition:.3s;
+}
+
+.cart-open-btn:hover{
+    transform:translateY(-4px);
+}
+
+#cartCount{
+    position:absolute;
+    top:-8px;
+    right:-8px;
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    background:#ef4444;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    font-weight:700;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.page-info{
+    padding:70px 8%;
+}
+
+.page-info h1{
+    font-size:4.5rem;
+    margin-bottom:20px;
+}
+
+.page-info p{
+    max-width:850px;
+    line-height:1.9;
+    color:#cbd5e1;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.products{
+    padding:0 8% 100px;
+}
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
+.product-card{
+    background:rgba(255,255,255,.05);
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.4s;
+    backdrop-filter:blur(15px);
+    position:relative;
+}
+
+.product-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 35px rgba(168,85,247,.45);
+}
+
+.variant{
+    background:linear-gradient(45deg,#9333ea,#7e22ce);
+    text-align:center;
+    padding:10px;
+    font-size:13px;
+    font-weight:700;
+}
+
+.product-card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.product-card:hover img{
+    transform:scale(1.08);
+}
+
+.product-content{
+    padding:25px;
+    text-align:center;
+}
+
+.product-content h3{
+    font-size:1.8rem;
+    margin-bottom:15px;
+}
+
+.product-content p{
+    color:#cbd5e1;
+    margin-bottom:20px;
+    line-height:1.7;
+}
+
+.price{
+    margin-bottom:20px;
+}
+
+.price span{
+    font-size:2rem;
+    font-weight:700;
+}
+
+/* =========================
+   CARD BUTTONS
+========================= */
+
+.card-buttons{
+    display:flex;
+    gap:12px;
+}
+
+.buy-btn,
+.cart-btn{
+    flex:1;
+    padding:14px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:600;
+}
+
+.buy-btn{
+    background:linear-gradient(45deg,#9333ea,#7e22ce);
+    color:white;
+}
+
+.cart-btn{
+    background:rgba(255,255,255,.06);
+    color:white;
+}
+
+.buy-btn:hover,
+.cart-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* =========================
+   CART SIDEBAR
+========================= */
+
+.cart-sidebar{
+    position:fixed;
+    top:0;
+    right:-450px;
+    width:420px;
+    max-width:100%;
+    height:100vh;
+    background:#120021;
+    z-index:3000;
+    transition:.4s;
+    display:flex;
+    flex-direction:column;
+    border-left:1px solid rgba(255,255,255,.08);
+}
+
+.cart-sidebar.active{
+    right:0;
+}
+
+.cart-header{
+    padding:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+#closeCart{
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:12px;
+    background:rgba(255,255,255,.06);
+    color:white;
+    cursor:pointer;
+}
+
+.cart-items{
+    flex:1;
+    overflow-y:auto;
+    padding:20px;
+}
+
+.cart-item{
+    display:flex;
+    gap:15px;
+    background:rgba(255,255,255,.04);
+    padding:15px;
+    border-radius:20px;
+    margin-bottom:20px;
+}
+
+.cart-item img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-info h4{
+    margin-bottom:10px;
+}
+
+.cart-item-price{
+    color:#c084fc;
+    margin-bottom:10px;
+}
+
+.quantity-controls{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.quantity-controls button{
+    width:30px;
+    height:30px;
+    border:none;
+    border-radius:10px;
+    background:rgba(255,255,255,.08);
+    color:white;
+    cursor:pointer;
+}
+
+.remove-btn{
+    margin-top:10px;
+    padding:8px 14px;
+    border:none;
+    border-radius:10px;
+    background:#ef4444;
+    color:white;
+    cursor:pointer;
+}
+
+.cart-footer{
+    padding:25px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.checkout-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(45deg,#9333ea,#7e22ce);
+    color:white;
+    cursor:pointer;
+    margin-top:20px;
+    font-weight:600;
+}
+
+.empty-cart{
+    text-align:center;
+    color:#94a3b8;
+    margin-top:40px;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.cart-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    z-index:2000;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+}
+
+.cart-overlay.active{
+    opacity:1;
+    pointer-events:all;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:35px;
+    background:#05000d;
+    color:#9ca3af;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .page-info h1{
+        font-size:3rem;
+    }
+
+    .top-bar{
+        flex-direction:column;
+        gap:20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="top-bar">
+
+<div class="logo">
+Vision <span>Print</span>
+</div>
+
+<div class="right-actions">
+
+<a href="index.html" class="home-btn">
+<i class="fas fa-house"></i>
+Acasă
+</a>
+
+<button class="cart-open-btn" id="openCart">
+<i class="fas fa-cart-shopping"></i>
+<span id="cartCount">0</span>
+</button>
+
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<section class="page-info">
+
+<h1>Produse & Categorii</h1>
+
+<p>
+Explorează gama completă de produse Vision Print pentru branding,
+cadouri și materiale promoționale premium.
+</p>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="products">
+
+<div class="products-grid">
+
+    <!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">FLYERE</div>
+
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Flyere</h3>
+
+<p>Flyere promoționale pentru reclame și evenimente.</p>
+
+<div class="price">
+de la <span>0.25</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">AGENDE</div>
+
+<img src="https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Agende Premium</h3>
+
+<p>Agende elegante pentru business și branding.</p>
+
+<div class="price">
+de la <span>24</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">TECH</div>
+
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>USB Stick</h3>
+
+<p>Memorii USB personalizate premium.</p>
+
+<div class="price">
+de la <span>19</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">ROLL-UP</div>
+
+<img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Roll-Up Banner</h3>
+
+<p>Sisteme premium pentru expoziții și prezentări.</p>
+
+<div class="price">
+de la <span>150</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">TEXTIL</div>
+
+<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Hanorace</h3>
+
+<p>Hanorace premium personalizate pentru branding.</p>
+
+<div class="price">
+de la <span>89</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">PROMO</div>
+
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Termosuri</h3>
+
+<p>Termosuri premium personalizate pentru cadouri.</p>
+
+<div class="price">
+de la <span>42</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">EVENT</div>
+
+<img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Lanyard-uri</h3>
+
+<p>Lanyard-uri moderne pentru evenimente și branding.</p>
+
+<div class="price">
+de la <span>5</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">OFFICE</div>
+
+<img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Mouse Pad</h3>
+
+<p>Mouse pad personalizat pentru birou și gaming.</p>
+
+<div class="price">
+de la <span>18</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">ECO</div>
+
+<img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Produse Eco</h3>
+
+<p>Produse sustenabile și eco-friendly personalizate.</p>
+
+<div class="price">
+de la <span>10</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">TECH</div>
+
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Smart Watch</h3>
+
+<p>Ceasuri smart promoționale moderne.</p>
+
+<div class="price">
+de la <span>120</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">PROMO</div>
+
+<img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Stickere</h3>
+
+<p>Stickere premium pentru branding și decor.</p>
+
+<div class="price">
+de la <span>2</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">LIFESTYLE</div>
+
+<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Rucsacuri</h3>
+
+<p>Rucsacuri premium pentru branding și călătorii.</p>
+
+<div class="price">
+de la <span>95</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">PRINT</div>
+
+<img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>A4 / A3</h3>
+
+<p>Documente alb-negru și color pentru orice nevoie.</p>
+
+<div class="price">
+de la <span>0.13</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">POSTERE</div>
+
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Postere</h3>
+
+<p>Print mare format pentru reclame și decor.</p>
+
+<div class="price">
+de la <span>0.60</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">STICKERE</div>
+
+<img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Autocolante</h3>
+
+<p>Stickere premium și etichete personalizate.</p>
+
+<div class="price">
+de la <span>0.40</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">TEXTIL</div>
+
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Tricouri</h3>
+
+<p>Print textil modern pentru haine personalizate.</p>
+
+<div class="price">
+de la <span>35</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">BUSINESS</div>
+
+<img src="https://images.unsplash.com/photo-1521790797524-b2497295b8a0?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Cărți Vizită</h3>
+
+<p>Business cards premium pentru afaceri.</p>
+
+<div class="price">
+de la <span>15</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="product-card">
+
+<div class="variant">CĂNI</div>
+
+<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-content">
+
+<h3>Căni</h3>
+
+<p>Căni personalizate pentru cadouri și branding.</p>
+
+<div class="price">
+de la <span>20</span> lei
+</div>
+
+<div class="card-buttons">
+
+<button class="buy-btn">
+Comandă
+</button>
+
+<button class="cart-btn">
+<i class="fas fa-cart-shopping"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CART SIDEBAR -->
+
+<div class="cart-sidebar" id="cartSidebar">
+
+<div class="cart-header">
+
+<h2>
+<i class="fas fa-cart-shopping"></i>
+Coșul Meu
+</h2>
+
+<button id="closeCart">
+<i class="fas fa-xmark"></i>
+</button>
+
+</div>
+
+<div class="cart-items" id="cartItems">
+
+<p class="empty-cart">
+Coșul este gol.
+</p>
+
+</div>
+
+<div class="cart-footer">
+
+<h3>
+Total:
+<span id="cartTotal">0 lei</span>
+</h3>
+
+<button class="checkout-btn">
+Finalizează Comanda
+</button>
+
+</div>
+
+</div>
+
+<!-- OVERLAY -->
+
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 Vision Print. Toate drepturile rezervate.
+</footer>
+
+<!-- SCRIPT -->
+
+<script>
+
+/* =========================
+   CART
+========================= */
+
+const cart = [];
+
+const cartSidebar =
+document.getElementById("cartSidebar");
+
+const cartOverlay =
+document.getElementById("cartOverlay");
+
+const openCart =
+document.getElementById("openCart");
+
+const closeCart =
+document.getElementById("closeCart");
+
+const cartItems =
+document.getElementById("cartItems");
+
+const cartTotal =
+document.getElementById("cartTotal");
+
+const cartCount =
+document.getElementById("cartCount");
+
+/* OPEN CART */
+
+openCart.addEventListener("click", () => {
+
+    cartSidebar.classList.add("active");
+    cartOverlay.classList.add("active");
+
+});
+
+/* CLOSE CART */
+
+function closeCartMenu(){
+
+    cartSidebar.classList.remove("active");
+    cartOverlay.classList.remove("active");
+
+}
+
+closeCart.addEventListener("click", closeCartMenu);
+
+cartOverlay.addEventListener("click", closeCartMenu);
+
+/* ADD TO CART */
+
+const addButtons =
+document.querySelectorAll(".cart-btn");
+
+addButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const card =
+        button.closest(".product-card");
+
+        const name =
+        card.querySelector("h3").textContent;
+
+        const price =
+        parseFloat(
+            card.querySelector(".price span")
+            .textContent
+        );
+
+        const image =
+        card.querySelector("img").src;
+
+        addToCart(name,price,image);
+
+    });
+
+});
+
+/* FUNCTION */
+
+function addToCart(name,price,image){
+
+    const existing =
+    cart.find(item => item.name === name);
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+            name,
+            price,
+            image,
+            quantity:1
+        });
+
+    }
+
+    updateCart();
+
+}
+
+/* UPDATE */
+
+function updateCart(){
+
+    cartItems.innerHTML = "";
+
+    let total = 0;
+    let totalItems = 0;
+
+    if(cart.length === 0){
+
+        cartItems.innerHTML = `
+        <p class="empty-cart">
+        Coșul este gol.
+        </p>
+        `;
+
+    }
+
+    cart.forEach((item,index) => {
+
+        total += item.price * item.quantity;
+
+        totalItems += item.quantity;
+
+        cartItems.innerHTML += `
+
+        <div class="cart-item">
+
+        <img src="${item.image}">
+
+        <div class="cart-item-info">
+
+        <h4>${item.name}</h4>
+
+        <div class="cart-item-price">
+        ${item.price} lei
+        </div>
+
+        <div class="quantity-controls">
+
+        <button onclick="decreaseQuantity(${index})">
+        -
+        </button>
+
+        <span>${item.quantity}</span>
+
+        <button onclick="increaseQuantity(${index})">
+        +
+        </button>
+
+        </div>
+
+        <button class="remove-btn"
+        onclick="removeItem(${index})">
+
+        Șterge
+
+        </button>
+
+        </div>
+
+        </div>
+
+        `;
+
+    });
+
+    cartTotal.textContent =
+    total.toFixed(2) + " lei";
+
+    cartCount.textContent =
+    totalItems;
+
+}
+
+/* INCREASE */
+
+function increaseQuantity(index){
+
+    cart[index].quantity++;
+
+    updateCart();
+
+}
+
+/* DECREASE */
+
+function decreaseQuantity(index){
+
+    if(cart[index].quantity > 1){
+
+        cart[index].quantity--;
+
+    }else{
+
+        cart.splice(index,1);
+
+    }
+
+    updateCart();
+
+}
+
+/* REMOVE */
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+}
+
+</script>
+
+</body>
+</html>

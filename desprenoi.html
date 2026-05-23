@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Despre Noi - Vision Print</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#090014;
+    color:white;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* BACKGROUND EFFECTS */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,#7c3aed44 0%,transparent 70%);
+    top:-250px;
+    left:-250px;
+    z-index:-2;
+    animation:moveGlow 10s ease-in-out infinite alternate;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,#a855f733 0%,transparent 70%);
+    bottom:-200px;
+    right:-200px;
+    z-index:-2;
+    animation:moveGlow2 12s ease-in-out infinite alternate;
+}
+
+@keyframes moveGlow{
+
+    from{
+        transform:translateY(0px);
+    }
+
+    to{
+        transform:translateY(60px);
+    }
+
+}
+
+@keyframes moveGlow2{
+
+    from{
+        transform:translateX(0px);
+    }
+
+    to{
+        transform:translateX(-70px);
+    }
+
+}
+
+/* NAVBAR */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+nav{
+    width:90%;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 0;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:800;
+    color:#c084fc;
+    letter-spacing:1px;
+}
+
+.nav-btn{
+    background:linear-gradient(45deg,#7c3aed,#a855f7);
+    border:none;
+    color:white;
+    padding:12px 24px;
+    border-radius:35px;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:15px;
+    font-weight:500;
+}
+
+.nav-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(168,85,247,0.4);
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:140px 20px 100px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.78),rgba(0,0,0,0.82)),
+    url("images/about-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    position:relative;
+    overflow:hidden;
+}
+
+/* FLOATING CIRCLES */
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(5px);
+    animation:float 7s ease-in-out infinite;
+}
+
+.circle1{
+    width:220px;
+    height:220px;
+    background:#7c3aed22;
+    top:10%;
+    left:5%;
+}
+
+.circle2{
+    width:140px;
+    height:140px;
+    background:#a855f722;
+    right:10%;
+    top:20%;
+}
+
+.circle3{
+    width:180px;
+    height:180px;
+    background:#c084fc11;
+    bottom:12%;
+    left:12%;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-25px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+/* BADGES */
+
+.hero-badge{
+    position:absolute;
+
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(12px);
+
+    padding:12px 20px;
+    border-radius:20px;
+
+    font-size:14px;
+
+    animation:badgeFloat 5s ease-in-out infinite;
+}
+
+.badge1{
+    top:22%;
+    left:10%;
+}
+
+.badge2{
+    top:30%;
+    right:12%;
+}
+
+.badge3{
+    bottom:18%;
+    right:15%;
+}
+
+@keyframes badgeFloat{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+/* HERO CONTENT */
+
+.hero-content{
+    max-width:950px;
+    position:relative;
+    z-index:5;
+
+    animation:fadeUp 1.2s ease;
+}
+
+.mini-title{
+    display:inline-block;
+
+    padding:10px 18px;
+    border-radius:30px;
+
+    background:rgba(168,85,247,0.12);
+    border:1px solid rgba(168,85,247,0.2);
+
+    color:#d8b4fe;
+
+    margin-bottom:25px;
+
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+.hero h1{
+    font-size:56px;
+    line-height:1.2;
+
+    margin-bottom:30px;
+
+    background:linear-gradient(45deg,#ffffff,#c084fc);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip: text;
+}
+
+.hero p{
+    color:#d1d5db;
+    font-size:20px;
+    line-height:2;
+    max-width:850px;
+    margin:auto;
+}
+
+/* HERO STATS */
+
+.hero-stats{
+    margin-top:55px;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+}
+
+.hero-stat{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(12px);
+
+    padding:25px 35px;
+    border-radius:25px;
+
+    min-width:220px;
+
+    transition:0.3s;
+}
+
+.hero-stat:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 25px rgba(168,85,247,0.18);
+}
+
+.hero-stat h3{
+    font-size:38px;
+    color:#c084fc;
+    margin-bottom:10px;
+}
+
+.hero-stat span{
+    color:#d1d5db;
+    font-size:15px;
+}
+
+/* SECTION */
+
+.section{
+    padding:120px 10%;
+    position:relative;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.title h2{
+    font-size:48px;
+    color:#d8b4fe;
+    margin-bottom:18px;
+}
+
+.title p{
+    color:#aaa;
+    max-width:700px;
+    margin:auto;
+    line-height:1.9;
+}
+
+/* ABOUT */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+}
+
+.about-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:30px;
+    padding:40px;
+
+    backdrop-filter:blur(12px);
+
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.about-card::before{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    background:#a855f711;
+    border-radius:50%;
+    top:-100px;
+    right:-100px;
+}
+
+.about-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 35px rgba(168,85,247,0.15);
+}
+
+.about-card h3{
+    font-size:30px;
+    color:#c084fc;
+    margin-bottom:20px;
+    position:relative;
+    z-index:2;
+}
+
+.about-card p{
+    color:#d1d5db;
+    line-height:2;
+    margin-bottom:20px;
+    position:relative;
+    z-index:2;
+}
+
+/* FEATURES */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.feature-box{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:30px;
+    padding:40px 30px;
+
+    text-align:center;
+
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.feature-box::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,transparent,rgba(168,85,247,0.05));
+    opacity:0;
+    transition:0.4s;
+}
+
+.feature-box:hover::before{
+    opacity:1;
+}
+
+.feature-box:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 35px rgba(168,85,247,0.18);
+}
+
+.feature-icon{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.feature-box h3{
+    color:#c084fc;
+    margin-bottom:15px;
+    font-size:25px;
+}
+
+.feature-box p{
+    color:#d1d5db;
+    line-height:1.9;
+}
+
+/* STORY */
+
+.story{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.story-image img{
+    width:100%;
+    border-radius:30px;
+    object-fit:cover;
+
+    box-shadow:0 0 35px rgba(168,85,247,0.15);
+}
+
+.story-content{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:30px;
+    padding:45px;
+
+    backdrop-filter:blur(12px);
+}
+
+.story-content h3{
+    color:#c084fc;
+    font-size:36px;
+    margin-bottom:25px;
+}
+
+.story-content p{
+    color:#d1d5db;
+    line-height:2;
+    margin-bottom:20px;
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+    display:grid;
+    gap:30px;
+}
+
+.testimonial{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:30px;
+    padding:40px;
+
+    position:relative;
+
+    transition:0.4s;
+}
+
+.testimonial::before{
+    content:"“";
+    position:absolute;
+    top:20px;
+    right:30px;
+
+    font-size:90px;
+    color:rgba(168,85,247,0.12);
+}
+
+.testimonial:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 35px rgba(168,85,247,0.15);
+}
+
+.testimonial p{
+    color:#d1d5db;
+    line-height:2;
+    margin-bottom:25px;
+    font-size:17px;
+}
+
+.testimonial h4{
+    color:#c084fc;
+    font-size:22px;
+}
+
+.testimonial span{
+    color:#999;
+    font-size:14px;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:50px 20px;
+    color:#777;
+
+    border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0px);
+    }
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .about-grid,
+    .story{
+        grid-template-columns:1fr;
+    }
+
+    .hero-badge{
+        display:none;
+    }
+
+    .title h2{
+        font-size:38px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+
+    <nav>
+
+        <div class="logo">
+            Vision Print
+        </div>
+
+        <button class="nav-btn" onclick="window.location.href='index.html'">
+            Înapoi
+        </button>
+
+    </nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <!-- EFFECTS -->
+
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+
+    <!-- BADGES -->
+
+    <div class="hero-badge badge1">
+        ✨ Design Modern
+    </div>
+
+    <div class="hero-badge badge2">
+        🔥 Personalizare Premium
+    </div>
+
+    <div class="hero-badge badge3">
+        ⚡ Livrare Rapidă
+    </div>
+
+    <!-- HERO CONTENT -->
+
+    <div class="hero-content">
+
+        <span class="mini-title">
+            Vision Print Studio
+        </span>
+
+        <h1>
+            Creativitate &<br>
+            Personalizare Premium
+        </h1>
+
+        <p>
+            Transformăm ideile în produse moderne și experiențe vizuale memorabile.
+            De la print textil și branding până la accesorii personalizate și
+            design premium, Vision Print înseamnă stil, calitate și creativitate
+            fără limite.
+        </p>
+
+        <!-- STATS -->
+
+        <div class="hero-stats">
+
+            <div class="hero-stat">
+
+                <h3>500+</h3>
+
+                <span>
+                    Clienți Mulțumiți
+                </span>
+
+            </div>
+
+            <div class="hero-stat">
+
+                <h3>1000+</h3>
+
+                <span>
+                    Produse Realizate
+                </span>
+
+            </div>
+
+            <div class="hero-stat">
+
+                <h3>100%</h3>
+
+                <span>
+                    Design Personalizat
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="section">
+
+    <div class="title">
+
+        <h2>Despre Noi</h2>
+
+        <p>
+            Nu realizăm doar produse personalizate — construim experiențe,
+            stil și identitate pentru fiecare client.
+        </p>
+
+    </div>
+
+    <div class="about-grid">
+
+        <div class="about-card">
+
+            <h3>✨ Cine Suntem</h3>
+
+            <p>
+                Vision Print este un studio modern de print și personalizare
+                creat pentru cei care își doresc produse diferite, elegante
+                și realizate cu atenție la detalii.
+            </p>
+
+            <p>
+                Lucrăm cu persoane creative, branduri moderne și afaceri care
+                vor să transmită profesionalism și stil prin fiecare produs.
+            </p>
+
+            <p>
+                Fiecare proiect este realizat cu pasiune și creativitate pentru
+                a transforma ideile simple în rezultate spectaculoase.
+            </p>
+
+        </div>
+
+        <div class="about-card">
+
+            <h3>🚀 Viziunea Noastră</h3>
+
+            <p>
+                Credem că fiecare produs trebuie să spună o poveste și să ofere
+                o experiență vizuală memorabilă.
+            </p>
+
+            <p>
+                Folosim tehnologii moderne, materiale premium și design-uri
+                atent realizate pentru rezultate profesionale și durabile.
+            </p>
+
+            <p>
+                Punem accent pe calitate, stil modern și o colaborare apropiată
+                cu fiecare client pentru a crea produse exact așa cum își imaginează.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="section">
+
+    <div class="features">
+
+        <div class="feature-box">
+
+            <div class="feature-icon">
+                🎨
+            </div>
+
+            <h3>Design Premium</h3>
+
+            <p>
+                Creăm modele moderne și concepte vizuale creative pentru produse
+                care atrag imediat atenția.
+            </p>
+
+        </div>
+
+        <div class="feature-box">
+
+            <div class="feature-icon">
+                ⚡
+            </div>
+
+            <h3>Execuție Rapidă</h3>
+
+            <p>
+                Oferim producție eficientă și termene rapide pentru orice comandă.
+            </p>
+
+        </div>
+
+        <div class="feature-box">
+
+            <div class="feature-icon">
+                🔥
+            </div>
+
+            <h3>Calitate Profesională</h3>
+
+            <p>
+                Materiale premium, print rezistent și finisaje moderne pentru
+                rezultate impecabile.
+            </p>
+
+        </div>
+
+        <div class="feature-box">
+
+            <div class="feature-icon">
+                🌍
+            </div>
+
+            <h3>Creativitate Modernă</h3>
+
+            <p>
+                Combinăm design-ul modern și tehnologia pentru produse
+                personalizate memorabile.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STORY -->
+
+<section class="section">
+
+    <div class="story">
+
+        <div class="story-image">
+
+            <img src="images/image4.jpg">
+
+        </div>
+
+        <div class="story-content">
+
+            <h3>Povestea Vision Print</h3>
+
+            <p>
+                Totul a început din pasiunea pentru design și dorința de a crea
+                produse diferite, moderne și memorabile.
+            </p>
+
+            <p>
+                În timp, Vision Print a devenit mai mult decât un simplu studio
+                de personalizare — a devenit un spațiu unde ideile creative
+                prind viață.
+            </p>
+
+            <p>
+                Fiecare tricou, accesoriu sau proiect de branding este realizat
+                cu grijă pentru a reflecta perfect stilul și personalitatea clientului.
+            </p>
+
+            <p>
+                Ne dorim ca fiecare produs să ofere nu doar un aspect premium,
+                ci și o experiență modernă și autentică.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 Vision Print — Design modern, print premium și creativitate fără limite.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<website>
+    
+    <brand>PurpleX</brand>
+
+    <services>
+
+        <service>
+            <name>Web Development</name>
+            <price>1200</price>
+        </service>
+
+        <service>
+            <name>UI UX Design</name>
+            <price>900</price>
+        </service>
+
+        <service>
+            <name>Cloud Solutions</name>
+            <price>1500</price>
+        </service>
+
+    </services>
+
+    <stats>
+        <projects>250</projects>
+        <clients>120</clients>
+        <satisfaction>99%</satisfaction>
+    </stats>
+
+</website>

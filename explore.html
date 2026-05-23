@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vision Print</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#090014;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+nav{
+    width:90%;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 0;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#c084fc;
+}
+
+.nav-btn{
+    background:linear-gradient(45deg,#7c3aed,#a855f7);
+    border:none;
+    color:white;
+    padding:12px 20px;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.nav-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* HERO */
+
+.hero{
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    padding:20px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+    url("images/image1.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.hero h1{
+    font-size:68px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    color:#d1d5db;
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.hero button{
+    background:linear-gradient(45deg,#7c3aed,#a855f7);
+    border:none;
+    color:white;
+    padding:14px 28px;
+    border-radius:35px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.hero button:hover{
+    transform:scale(1.05);
+}
+
+/* SECTIONS */
+
+.section{
+    padding:100px 10%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.title h2{
+    font-size:42px;
+    color:#d8b4fe;
+}
+
+/* CARDS */
+
+.card{
+    display:flex;
+    align-items:center;
+    gap:25px;
+
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:20px;
+    padding:25px;
+
+    margin-bottom:25px;
+
+    backdrop-filter:blur(10px);
+
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 25px rgba(168,85,247,0.2);
+}
+
+.card img{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.card h3{
+    color:#c084fc;
+    margin-bottom:10px;
+    font-size:28px;
+}
+
+.card p{
+    color:#d1d5db;
+    line-height:1.7;
+}
+
+/* BUTTON */
+
+.btn-more{
+    margin-top:15px;
+
+    background:none;
+    border:1px solid #a855f7;
+
+    color:#a855f7;
+
+    padding:10px 16px;
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.btn-more:hover{
+    background:#a855f7;
+    color:white;
+}
+
+.more{
+    display:none;
+    margin-top:15px;
+    color:#aaa;
+    line-height:1.6;
+}
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:18px;
+}
+
+.gallery img{
+    width:100%;
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+/* POPUP */
+
+.popup{
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.92);
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    z-index:3000;
+}
+
+.popup img{
+    max-width:90%;
+    max-height:90%;
+
+    border-radius:20px;
+
+    animation:zoom 0.3s ease;
+}
+
+.close{
+    position:absolute;
+
+    top:25px;
+    right:40px;
+
+    color:white;
+
+    font-size:45px;
+
+    cursor:pointer;
+}
+
+@keyframes zoom{
+    from{
+        transform:scale(0.7);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#777;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .card img{
+        width:100%;
+        height:250px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+    <nav>
+
+        <div class="logo">
+            Vision Print
+        </div>
+
+   <button class="nav-btn" onclick="window.location.href='index.html'">
+    Acasă
+</button>
+
+    </nav>
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Personalizare Modernă
+        </h1>
+
+        <p>
+            Produse create special pentru stilul și personalitatea ta.
+        </p>
+
+        <button onclick="scrollToServices()">
+            Descoperă Serviciile
+        </button>
+
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="section" id="services">
+
+    <div class="title">
+        <h2>Serviciile Noastre</h2>
+    </div>
+
+    <!-- CARD 1 -->
+
+    <div class="card">
+
+        <img src="images/image2.png">
+
+        <div>
+
+            <h3>👕 Print Textil Premium</h3>
+
+            <p>
+                Personalizăm tricouri, hanorace și articole vestimentare
+                folosind printuri moderne și materiale de calitate premium.
+            </p>
+
+            <button class="btn-more" onclick="toggle(this)">
+                Află mai multe
+            </button>
+
+            <div class="more">
+                Fiecare produs este realizat atent pentru un aspect modern,
+                rezistent și profesional.
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+
+    <div class="card">
+
+        <img src="images/image3.png">
+
+        <div>
+
+            <h3>☕ Obiecte Personalizate</h3>
+
+            <p>
+                Creăm căni, accesorii și obiecte personalizate perfecte
+                pentru cadouri sau utilizare zilnică.
+            </p>
+
+            <button class="btn-more" onclick="toggle(this)">
+                Află mai multe
+            </button>
+
+            <div class="more">
+                Produse ideale pentru surprize speciale și idei creative
+                personalizate exact cum îți dorești.
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 3 -->
+
+    <div class="card">
+
+        <img src="images/image4.jpg">
+
+        <div>
+
+            <h3>🏢 Branding pentru Afaceri</h3>
+
+            <p>
+                Soluții profesionale pentru branding, uniforme și produse
+                promoționale dedicate companiilor moderne.
+            </p>
+
+            <button class="btn-more" onclick="toggle(this)">
+                Află mai multe
+            </button>
+
+            <div class="more">
+                Te ajutăm să creezi o identitate vizuală memorabilă
+                și profesionistă pentru afacerea ta.
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 4 -->
+
+    <div class="card">
+
+        <img src="images/image5.jpg">
+
+        <div>
+
+            <h3>🎨 Design Grafic Modern</h3>
+
+            <p>
+                Realizăm design-uri creative, logo-uri și concepte vizuale
+                moderne pentru orice tip de proiect.
+            </p>
+
+            <button class="btn-more" onclick="toggle(this)">
+                Află mai multe
+            </button>
+
+            <div class="more">
+                Punem accent pe stil premium, creativitate și un aspect
+                vizual modern și elegant.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="section">
+
+    <div class="title">
+        <h2>Galerie</h2>
+    </div>
+
+    <div class="gallery">
+
+        <img src="images/image16.jpg" onclick="openImage(this.src)">
+        <img src="images/image17.jpg" onclick="openImage(this.src)">
+        <img src="images/image13.jpg" onclick="openImage(this.src)">
+        <img src="images/image14.jpg" onclick="openImage(this.src)">
+        <img src="images/image15.jpg" onclick="openImage(this.src)">
+        <img src="images/image6.jpg" onclick="openImage(this.src)">
+        <img src="images/image7.jpg" onclick="openImage(this.src)">
+        <img src="images/image8.jpg" onclick="openImage(this.src)">
+        <img src="images/image9.jpg" onclick="openImage(this.src)">
+        <img src="images/image10.jpg" onclick="openImage(this.src)">
+        <img src="images/image11.jpg" onclick="openImage(this.src)">
+        <img src="images/image12.jpg" onclick="openImage(this.src)">
+
+    </div>
+
+</section>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+
+    <span class="close" onclick="closeImage()">
+        &times;
+    </span>
+
+    <img id="popup-img">
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 Vision Print
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function toggle(button){
+
+    const more = button.nextElementSibling;
+
+    if(more.style.display === "block"){
+        more.style.display = "none";
+    }
+
+    else{
+        more.style.display = "block";
+    }
+
+}
+
+function scrollToServices(){
+
+    document.getElementById("services").scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+function openImage(src){
+
+    document.getElementById("popup").style.display = "flex";
+
+    document.getElementById("popup-img").src = src;
+
+}
+
+function closeImage(){
+
+    document.getElementById("popup").style.display = "none";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision Print | Portofoliu Clienți</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#090014;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+nav{
+    width:90%;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:700;
+    color:#c084fc;
+}
+
+.nav-links{
+    display:flex;
+    gap:15px;
+}
+
+.nav-btn{
+    background:linear-gradient(45deg,#7c3aed,#a855f7);
+    border:none;
+    color:white;
+    padding:12px 20px;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:500;
+}
+
+.nav-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(168,85,247,0.4);
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+    background:
+    linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.8)),
+    url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero h1{
+    font-size:74px;
+    margin-bottom:20px;
+    line-height:1.1;
+}
+
+.hero p{
+    color:#d1d5db;
+    font-size:21px;
+    margin-bottom:35px;
+    line-height:1.8;
+}
+
+.hero-btn{
+    background:linear-gradient(45deg,#7c3aed,#a855f7);
+    border:none;
+    color:white;
+    padding:16px 32px;
+    border-radius:40px;
+    cursor:pointer;
+    font-size:17px;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.hero-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 25px rgba(168,85,247,0.5);
+}
+
+/* SECTION */
+
+.section{
+    padding:110px 8%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.title h2{
+    font-size:48px;
+    color:#d8b4fe;
+    margin-bottom:15px;
+}
+
+.title p{
+    color:#b8b8b8;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-top:-80px;
+    position:relative;
+    z-index:2;
+    padding:0 8%;
+}
+
+.stat-box{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    padding:35px 25px;
+    border-radius:25px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.stat-box:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 30px rgba(168,85,247,0.25);
+}
+
+.stat-box h3{
+    font-size:42px;
+    color:#c084fc;
+    margin-bottom:10px;
+}
+
+.stat-box p{
+    color:#d1d5db;
+}
+
+/* PORTFOLIO GRID */
+
+.portfolio-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;
+}
+
+.portfolio-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:22px;
+    overflow:hidden;
+    transition:0.35s;
+    backdrop-filter:blur(10px);
+}
+
+.portfolio-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 35px rgba(168,85,247,0.25);
+}
+
+.portfolio-card img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    cursor:pointer;
+}
+
+.card-content{
+    padding:22px;
+}
+
+.card-content h3{
+    color:#d8b4fe;
+    margin-bottom:10px;
+    font-size:22px;
+}
+
+.card-content p{
+    color:#d1d5db;
+    line-height:1.7;
+    font-size:15px;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:8px 14px;
+    border-radius:30px;
+    background:rgba(168,85,247,0.18);
+    color:#d8b4fe;
+    font-size:13px;
+}
+
+/* CTA */
+
+.cta{
+    text-align:center;
+    background:linear-gradient(45deg,rgba(124,58,237,0.25),rgba(168,85,247,0.15));
+    border-top:1px solid rgba(255,255,255,0.08);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.cta h2{
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.cta p{
+    max-width:700px;
+    margin:auto;
+    color:#d1d5db;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+/* POPUP */
+
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.92);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:3000;
+}
+
+.popup img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:20px;
+    animation:zoom 0.3s ease;
+}
+
+.close{
+    position:absolute;
+    top:25px;
+    right:40px;
+    color:white;
+    font-size:50px;
+    cursor:pointer;
+}
+
+@keyframes zoom{
+    from{
+        transform:scale(0.7);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#777;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .cta h2{
+        font-size:36px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .title h2{
+        font-size:34px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">Vision Print</div>
+
+        <div class="nav-links">
+<a href="index.html">
+    <button class="nav-btn">Acasă</button>
+</a>
+           <a href="contact.html">
+    <button class="nav-btn">Contact</button>
+</a>
+        </div>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Portofoliu Cu Clienți Fericiți</h1>
+
+        <p>
+            Descoperă cele mai apreciate produse personalizate realizate de Vision Print.
+            De la tricouri și hanorace până la branding premium pentru afaceri,
+            fiecare proiect este creat cu atenție și pasiune.
+        </p>
+
+        <button class="hero-btn" onclick="scrollToPortfolio()">
+            Vezi proiectele
+        </button>
+    </div>
+</section>
+
+<section class="stats">
+
+    <div class="stat-box">
+        <h3>2500+</h3>
+        <p>Comenzi Finalizate</p>
+    </div>
+
+    <div class="stat-box">
+        <h3>30</h3>
+        <p>Clienți în Galerie</p>
+    </div>
+
+    <div class="stat-box">
+        <h3>99%</h3>
+        <p>Clienți Mulțumiți</p>
+    </div>
+
+    <div class="stat-box">
+        <h3>24h</h3>
+        <p>Suport Rapid</p>
+    </div>
+
+</section>
+
+<section class="section" id="portfolio">
+
+    <div class="title">
+        <h2>Galerie Portofoliu</h2>
+
+        <p>
+            O selecție modernă cu clienți fericiți și produse personalizate Vision Print.
+            Toate imaginile pot fi deschise în format mare.
+        </p>
+    </div>
+
+    <div class="portfolio-grid">
+
+        <!-- 30 PORTFOLIO CARDS -->
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop" alt="Alexandru Popescu" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Alexandru Popescu</h3>
+                <p>Tricouri personalizate pentru echipa de gaming cu print premium și culori vibrante rezistente la spălări multiple.</p>
+                <span class="badge">Print Textil Premium</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop" alt="Maria Ionescu" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Maria Ionescu</h3>
+                <p>Hanorace personalizate pentru un brand local de fashion realizate cu design minimalist și finisaje moderne.</p>
+                <span class="badge">Brand Fashion</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop" alt="Cristian Vasile" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Cristian Vasile</h3>
+                <p>Căni personalizate pentru un eveniment corporate cu logo elegant și ambalaj premium pentru cadouri.</p>
+                <span class="badge">Corporate Gifts</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1200&auto=format&fit=crop" alt="Bianca Matei" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Daniel Radu</h3>
+                <p>Set complet de tricouri pentru festival realizate cu print UV și design artistic personalizat.</p>
+                <span class="badge">Festival Collection</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop" alt="Daniel Radu" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Bianca Matei</h3>
+                <p>Uniforme moderne pentru cafenea cu broderie premium și identitate vizuală profesională.</p>
+                <span class="badge">Uniforme Business</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop" alt="Elena Dobre" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Andrei Mihai</h3>
+                <p>Print personalizat pe hanorace oversize pentru o colecție urbană modernă și exclusivistă.</p>
+                <span class="badge">Urban Style</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop" alt="Andrei Mihai" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Elena Dobre</h3>
+                <p>Produse promoționale personalizate pentru lansarea unui startup tech din România.</p>
+                <span class="badge">Startup Branding</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop" alt="Larisa Tudor" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Larisa Tudor</h3>
+                <p>Tricouri pentru echipa de voluntari realizate cu materiale confortabile și design colorat.</p>
+                <span class="badge">Volunteers Team</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop" alt="Victor Ene" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Roxana Pavel</h3>
+                <p>Hanorace premium pentru staff-ul unui club de fitness cu print rezistent și modern.</p>
+                <span class="badge">Fitness Apparel</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=1200&auto=format&fit=crop" alt="Roxana Pavel" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Victor Ene</h3>
+                <p>Set elegant de produse personalizate pentru o campanie de marketing premium.</p>
+                <span class="badge">Marketing Campaign</span>
+            </div>
+        </div>
+
+        <!-- Additional cards -->
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop" alt="Carmen Luca" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Carmen Luca</h3>
+                <p>Tricouri personalizate pentru eveniment caritabil realizate într-un stil elegant și modern.</p>
+                <span class="badge">Charity Event</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=1200&auto=format&fit=crop" alt="Stefan Ilie" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Ștefan Ilie</h3>
+                <p>Uniforme personalizate pentru restaurant premium cu logo brodat și materiale confortabile.</p>
+                <span class="badge">Restaurant Branding</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop" alt="Monica Stan" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Monica Stan</h3>
+                <p>Căni și accesorii personalizate pentru cadouri corporate elegante și memorabile.</p>
+                <span class="badge">Premium Gifts</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1200&auto=format&fit=crop" alt="Paul Dumitru" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Paul Dumitru</h3>
+                <p>Print colorat pe tricouri oversized pentru colecție streetwear limitată.</p>
+                <span class="badge">Streetwear Collection</span>
+            </div>
+        </div>
+
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?q=80&w=1200&auto=format&fit=crop" alt="George Marin" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>George Marin</h3>
+                <p>Hanorace personalizate pentru echipă sportivă cu materiale premium și logo imprimat HD.</p>
+                <span class="badge">Sports Team</span>
+            </div>
+        </div>
+
+        <!-- Remaining cards 17-30 -->
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop" alt="Ioana Nistor" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Ioana Nistor</h3>
+                <p>Produse personalizate pentru un atelier creativ destinat adolescenților și artiștilor.</p>
+                <span class="badge">Creative Workshop</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop" alt="Mihai Toma" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Mihai Toma</h3>
+                <p>Tricouri premium pentru staff de eveniment muzical cu design neon modern.</p>
+                <span class="badge">Music Festival</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop" alt="Teodora Ene" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Teodora Ene</h3>
+                <p>Print minimalist pentru brand online de haine și accesorii personalizate.</p>
+                <span class="badge">Minimal Fashion</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop" alt="Florin Neagu" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Florin Neagu</h3>
+                <p>Uniforme personalizate pentru companie logistică cu branding modern și elegant.</p>
+                <span class="badge">Company Uniforms</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop" alt="Simona Petrescu" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Simona Petrescu</h3>
+                <p>Căni personalizate pentru campanie social media și influenceri locali.</p>
+                <span class="badge">Influencer Campaign</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1200&auto=format&fit=crop" alt="Robert Sandu" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Robert Sandu</h3>
+                <p>Produse promoționale pentru showroom auto cu materiale premium și print lucios.</p>
+                <span class="badge">Auto Branding</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop" alt="Alina Moldovan" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Alina Moldovan</h3>
+                <p>Tricouri pentru petrecere aniversară realizate cu design personalizat și print vibrant.</p>
+                <span class="badge">Birthday Collection</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop" alt="Eduard Stan" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Eduard Stan</h3>
+                <p>Branding complet pentru cafenea modernă cu uniforme și accesorii personalizate.</p>
+                <span class="badge">Coffee Shop Branding</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop" alt="Patricia Rusu" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Patricia Rusu</h3>
+                <p>Hanorace premium pentru studio de dans cu imprimeuri moderne și confort ridicat.</p>
+                <span class="badge">Dance Studio</span>
+            </div>
+        </div>
+
+        
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?q=80&w=1200&auto=format&fit=crop" alt="Denisa Lupu" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Denisa Lupu</h3>
+                <p>Seturi promoționale pentru salon cosmetic cu branding elegant și finisaje premium.</p>
+                <span class="badge">Salon Premium</span>
+            </div>
+        </div>
+
+
+
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop" alt="Sebastian Dragomir" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Sebastian Dragomir</h3>
+                <p>Tricouri personalizate pentru campanie online cu imprimeuri HD și design creativ.</p>
+                <span class="badge">Online Campaign</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop" alt="Ana Georgescu" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Ana Georgescu</h3>
+                <p>Produse personalizate pentru workshop educațional și activități creative pentru copii.</p>
+                <span class="badge">Educational Event</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=1200&auto=format&fit=crop" alt="Valentin Pop" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Valentin Pop</h3>
+                <p>Hanorace și tricouri pentru comunitate tech cu design futurist și materiale premium.</p>
+                <span class="badge">Tech Community</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop" alt="Gabriela Tudor" onclick="openImage(this.src)">
+            <div class="card-content">
+                <h3>Gabriela Tudor</h3>
+                <p>Produse promoționale și branding complet pentru studio foto premium.</p>
+                <span class="badge">Photo Studio</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section cta">
+
+    <h2>Vrei și Tu Produse Personalizate?</h2>
+
+    <p>
+        Contactează Vision Print pentru tricouri, hanorace, branding,
+        obiecte personalizate și materiale promoționale realizate profesional.
+    </p>
+
+<a href="contact.html">
+    <button class="hero-btn">
+        Cere O Ofertă
+    </button> 
+</a>
+
+</section>
+
+<div class="popup" id="popup">
+
+    <span class="close" onclick="closeImage()">&times;</span>
+
+    <img id="popup-img">
+
+</div>
+
+<footer>
+    © 2026 Vision Print • Toate drepturile rezervate
+</footer>
+
+<script>
+
+function scrollToPortfolio(){
+
+    document.getElementById('portfolio').scrollIntoView({
+        behavior:'smooth'
+    });
+
+}
+
+function openImage(src){
+
+    document.getElementById('popup').style.display = 'flex';
+
+    document.getElementById('popup-img').src = src;
+
+}
+
+function closeImage(){
+
+    document.getElementById('popup').style.display = 'none';
+
+}
+
+window.addEventListener('click', function(e){
+
+    const popup = document.getElementById('popup');
+
+    if(e.target === popup){
+        popup.style.display = 'none';
+    }
+
+});
+
+</script>
+
+</body>
+</html>

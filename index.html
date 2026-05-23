@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vision Print</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#090015;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:#7e22ce;
+    filter:blur(220px);
+    top:-200px;
+    left:-200px;
+    opacity:.2;
+    z-index:-1;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:#9333ea;
+    filter:blur(220px);
+    bottom:-250px;
+    right:-200px;
+    opacity:.2;
+    z-index:-1;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(#9333ea,#7e22ce);
+    border-radius:20px;
+}
+
+/* NAVBAR */
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(0,0,0,.2);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.navbar{
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:2rem;
+    font-weight:800;
+    background:linear-gradient(to right,#d8b4fe,#9333ea);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip: text;
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    position:relative;
+    transition:.3s;
+}
+
+.nav-links a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:#c084fc;
+    left:0;
+    bottom:-6px;
+    transition:.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-btn{
+    padding:12px 24px;
+    border:none;
+    border-radius:40px;
+    background:linear-gradient(45deg,#9333ea,#7e22ce);
+    color:white;
+    cursor:pointer;
+    transition:.4s;
+    font-weight:600;
+}
+
+.nav-btn:hover{
+    transform:translateY(-4px);
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+    padding:140px 10% 80px;
+    flex-wrap:wrap;
+}
+
+.hero-left{
+    flex:1;
+}
+
+.hero-left h1{
+    font-size:5rem;
+    line-height:1.1;
+    margin-bottom:25px;
+}
+
+.hero-left p{
+    color:#d1d5db;
+    font-size:1.1rem;
+    line-height:1.9;
+    margin-bottom:35px;
+    max-width:650px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.primary-btn,
+.secondary-btn{
+    padding:16px 32px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.4s;
+}
+
+.primary-btn{
+    background:linear-gradient(45deg,#a855f7,#7e22ce);
+    color:white;
+}
+
+.secondary-btn{
+    background:transparent;
+    border:2px solid #a855f7;
+    color:white;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+    transform:translateY(-5px);
+}
+
+/* HERO CARD */
+
+.hero-right{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.glass-card{
+    width:420px;
+    height:420px;
+    background:rgba(255,255,255,.06);
+    border-radius:35px;
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+    animation:float 4s ease-in-out infinite;
+    box-shadow:0 0 40px rgba(168,85,247,.3);
+}
+
+.glass-card::before{
+    content:'';
+    position:absolute;
+    width:250px;
+    height:250px;
+    background:linear-gradient(#9333ea,#7e22ce);
+    border-radius:50%;
+    top:-90px;
+    right:-90px;
+    opacity:.3;
+}
+
+.glass-card h2{
+    font-size:3rem;
+    color:#d8b4fe;
+    z-index:2;
+}
+
+.glass-card p{
+    z-index:2;
+    color:#d1d5db;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+/* SECTION */
+
+section{
+    padding:100px 10%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-size:3rem;
+    color:#d8b4fe;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#cbd5e1;
+}
+
+/* FEATURES */
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.feature-card{
+    background:rgba(255,255,255,.05);
+    padding:35px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.feature-card::before{
+    content:'';
+    position:absolute;
+    width:150px;
+    height:150px;
+    background:linear-gradient(#9333ea,#7e22ce);
+    filter:blur(80px);
+    top:-40px;
+    right:-40px;
+    opacity:.15;
+}
+
+.feature-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px rgba(168,85,247,.4);
+}
+
+.feature-card i{
+    font-size:2rem;
+    color:#c084fc;
+    margin-bottom:20px;
+}
+
+.feature-card h3{
+    margin-bottom:12px;
+}
+
+.feature-card p{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+/* SERVICES */
+
+.services-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.service-box{
+    background:linear-gradient(145deg,#1e0936,#12051f);
+    padding:40px;
+    border-radius:25px;
+    transition:.4s;
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.service-box:hover{
+    transform:scale(1.05);
+}
+
+
+/* TESTIMONIALS */
+
+.testimonials{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.testimonial{
+    background:rgba(255,255,255,.05);
+    border-radius:25px;
+    padding:30px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.testimonial img{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    margin-bottom:15px;
+}
+
+/* CONTACT */
+
+.contact-form{
+    max-width:700px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    padding:18px;
+    border:none;
+    border-radius:18px;
+    background:#140021;
+    color:white;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.contact-form textarea{
+    height:180px;
+}
+
+.contact-form button{
+    padding:18px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(45deg,#9333ea,#7e22ce);
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+}
+
+/* FOOTER */
+
+footer{
+    padding:40px;
+    text-align:center;
+    background:#05000d;
+    color:#9ca3af;
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+/* CHAT */
+
+.chat-btn{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:75px;
+    height:75px;
+    border:none;
+    border-radius:50%;
+    background:linear-gradient(45deg,#9333ea,#7e22ce);
+    color:white;
+    font-size:1.6rem;
+    cursor:pointer;
+    z-index:999;
+    box-shadow:0 0 30px rgba(168,85,247,.5);
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.08);}
+    100%{transform:scale(1);}
+}
+
+.chat-window{
+    position:fixed;
+    bottom:120px;
+    right:25px;
+    width:350px;
+    background:#140021;
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+    display:none;
+    z-index:999;
+    animation:show .3s ease;
+}
+
+@keyframes show{
+    from{
+        transform:translateY(20px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+.chat-header{
+    background:linear-gradient(45deg,#9333ea,#7e22ce);
+    padding:20px;
+    font-weight:600;
+}
+
+.chat-body{
+    padding:20px;
+    max-height:300px;
+    overflow-y:auto;
+}
+
+.message{
+    background:rgba(255,255,255,.06);
+    padding:12px 15px;
+    border-radius:15px;
+    margin-bottom:12px;
+    line-height:1.6;
+}
+
+.chat-input{
+    display:flex;
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+.chat-input input{
+    flex:1;
+    padding:15px;
+    border:none;
+    background:#1b002c;
+    color:white;
+}
+
+.chat-input button{
+    width:70px;
+    border:none;
+    background:#9333ea;
+    color:white;
+    cursor:pointer;
+}
+
+/* LIVE BADGE */
+
+.live-badge{
+    position:fixed;
+    left:20px;
+    bottom:20px;
+    background:rgba(255,255,255,.06);
+    padding:15px 20px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+    z-index:999;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-left h1{
+        font-size:3.2rem;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .glass-card{
+        width:320px;
+        height:320px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LIVE BADGE -->
+
+<div class="live-badge">
+🔥 248 persoane online acum
+</div>
+
+<!-- NAVBAR -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+Vision Print
+</div>
+
+<ul class="nav-links">
+<li><a href="#home">Acasă</a></li>
+<li><a href="#features">Funcționalități</a></li>
+<li><a href="produse.html">Produse</a></li>
+<li><a href="promotionale.html">Promoționale</a></li>
+<li><a href="desprenoi.html">Despre noi</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+<button class="nav-btn">
+Comandă Acum
+</button>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-left">
+
+<h1>
+Transformăm ideile în produse premium
+</h1>
+
+<p>
+Design modern, print profesional și experiență vizuală spectaculoasă.
+Produse create pentru oameni care vor să iasă în evidență.
+</p>
+
+<div class="hero-buttons">
+
+<a href="explore.html">
+  <button class="primary-btn">
+    Explorează
+  </button>
+</a>
+
+<a href="portofolio.html">
+<button class="secondary-btn">
+Portofoliu
+</button>
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="glass-card">
+
+<h2>Vision</h2>
+
+<p>Creativitate • Stil • Impact</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section id="features">
+
+<div class="section-title">
+
+<h2>12+ Funcționalități Premium</h2>
+
+<p>
+Tot ce ai nevoie pentru o experiență modernă.
+</p>
+
+</div>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+<i class="fas fa-palette"></i>
+<h3>Design Personalizat</h3>
+<p>Produse create exact cum îți dorești.</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-bolt"></i>
+<h3>Comandă Rapidă</h3>
+<p>Proces simplu și intuitiv.</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-crown"></i>
+<h3>Calitate Premium</h3>
+<p>Materiale și print de top.</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-mobile-screen"></i>
+<h3>Responsive</h3>
+<p>Perfect pe orice dispozitiv.</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-globe"></i>
+<h3>Acces Global</h3>
+<p>Disponibil oriunde în lume.</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-rocket"></i>
+<h3>Viteză Mare</h3>
+<p>Site rapid și optimizat.</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-shield"></i>
+<h3>Securitate</h3>
+<p>Date protejate permanent.</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-image"></i>
+<h3>Galerie Live</h3>
+<p>Vezi cele mai noi produse.</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-star"></i>
+<h3>Review-uri</h3>
+<p>Feedback real de la clienți.</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-fire"></i>
+<h3>Trending</h3>
+<p>Produse populare live.</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-gift"></i>
+<h3>Reduceri</h3>
+<p>Promoții și oferte exclusive.</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-brush"></i>
+<h3>Editor Online</h3>
+<p>Editezi direct în browser.</p>
+</div>
+
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+<div class="section-title">
+
+<h2>Serviciile Noastre</h2>
+
+<p>
+Tot ce ai nevoie pentru personalizare premium.
+</p>
+
+</div>
+
+<div class="services-container">
+
+<div class="service-box">
+<h3>👕 Print Textil</h3>
+<p>Tricouri, hanorace și articole premium.</p>
+</div>
+
+<div class="service-box">
+<h3>☕ Obiecte Personalizate</h3>
+<p>Căni, huse și produse creative.</p>
+</div>
+
+<div class="service-box">
+<h3>🏢 Branding Business</h3>
+<p>Produse promoționale moderne.</p>
+</div>
+
+<div class="service-box">
+<h3>🎨 Design Grafic</h3>
+<p>Logo-uri și design profesional.</p>
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 Vision Print • Toate drepturile rezervate
+</p>
+
+</footer>
+
+<!-- CHAT -->
+
+<button class="chat-btn" onclick="toggleChat()">
+<i class="fas fa-comments"></i>
+</button>
+
+<div class="chat-window" id="chatWindow">
+
+<div class="chat-header">
+Vision Assistant ✨
+</div>
+
+<div class="chat-body" id="chatBody">
+
+<div class="message">
+Salut 👋 Cu ce te pot ajuta astăzi?
+</div>
+
+</div>
+
+<div class="chat-input">
+
+<input type="text" id="userInput" placeholder="Scrie un mesaj...">
+
+<button onclick="sendMessage()">
+<i class="fas fa-paper-plane"></i>
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function toggleChat(){
+
+    const chat = document.getElementById("chatWindow");
+
+    if(chat.style.display === "block"){
+        chat.style.display = "none";
+    }
+
+    else{
+        chat.style.display = "block";
+    }
+
+}
+
+function sendMessage(){
+
+    const input = document.getElementById("userInput");
+    const body = document.getElementById("chatBody");
+
+    if(input.value.trim() === "") return;
+
+    const userMessage = document.createElement("div");
+    userMessage.classList.add("message");
+    userMessage.innerHTML = "🧑 " + input.value;
+
+    body.appendChild(userMessage);
+
+    const text = input.value.toLowerCase();
+
+    let response = "✨ Mulțumim pentru mesaj!";
+
+    if(text.includes("pret")){
+        response = "💸 Prețurile diferă în funcție de produs și design.";
+    }
+
+    else if(text.includes("livrare")){
+        response = "🚚 Livrarea durează între 24 și 72 de ore.";
+    }
+
+    else if(text.includes("program")){
+        response = "🕒 Suntem disponibili 24/7 online.";
+    }
+
+    else if(text.includes("design")){
+        response = "🎨 Echipa noastră creează design-uri moderne și premium.";
+    }
+
+    setTimeout(()=>{
+
+        const botMessage = document.createElement("div");
+        botMessage.classList.add("message");
+        botMessage.innerHTML = response;
+
+        body.appendChild(botMessage);
+
+        body.scrollTop = body.scrollHeight;
+
+    },700);
+
+    input.value = "";
+
+}
+
+</script>
+
+</body>
+</html>
