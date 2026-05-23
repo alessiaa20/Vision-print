@@ -631,6 +631,159 @@ footer{
 
 }
 
+/* =======================================
+    ELEMENTE NOI ADĂUGATE (STILURI CORECTATE)
+======================================= */
+
+/* Selector Cantitate direct în Card */
+.card-qty-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-qty-wrapper label {
+    font-size: 12px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.card-qty-input {
+    width: 60px;
+    background: #1e1135;
+    border: 1px solid #a855f7;
+    color: white;
+    padding: 5px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    outline: none;
+}
+
+/* Animație bump pe butonul de coș la actualizare */
+@keyframes bump {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.2); }
+    50% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+.bump-animation {
+    animation: bump 0.3s ease-out;
+}
+
+/* Animație premium Card la adăugare */
+@keyframes modernPop {
+    0% { transform: translateY(0) scale(1); }
+    20% { transform: translateY(4px) scale(0.97); }
+    50% { transform: translateY(-15px) scale(1.03); box-shadow: 0 15px 45px rgba(168,85,247,0.6); border-color: #a855f7; }
+    80% { transform: translateY(-2px) scale(1.01); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+.product-card-active-anim {
+    animation: modernPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+/* Particulă modernă care zboară către coș */
+.flying-particle {
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg, #a855f7, #d8b4fe);
+    border-radius: 50%;
+    box-shadow: 0 0 15px #a855f7;
+    z-index: 9999;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
+
+/* Structură Modală Personalizată */
+.custom-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 0, 15, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.custom-modal-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.custom-modal {
+    background: #120021;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(168, 85, 247, 0.25);
+    transform: translateY(30px) scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-modal-overlay.show .custom-modal {
+    transform: translateY(0) scale(1);
+}
+
+.custom-modal-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(45deg, #9333ea, #7e22ce);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+}
+
+.custom-modal h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.custom-modal p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.custom-modal-btn {
+    padding: 14px 35px;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(45deg, #9333ea, #7e22ce);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.custom-modal-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+}
+
 </style>
 </head>
 
@@ -741,6 +894,11 @@ TEXTIL
 de la <span>35</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 
 <button class="buy-btn">
@@ -777,6 +935,11 @@ PROMO
 de la <span>20</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 
 <button class="buy-btn">
@@ -809,6 +972,11 @@ Comandă
 de la <span>18</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 <button class="buy-btn">Comandă</button>
 <button class="cart-btn">
@@ -834,6 +1002,11 @@ de la <span>18</span> lei
 
 <div class="price">
 de la <span>12</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -863,6 +1036,11 @@ de la <span>12</span> lei
 de la <span>75</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 <button class="buy-btn">Comandă</button>
 <button class="cart-btn">
@@ -888,6 +1066,11 @@ de la <span>75</span> lei
 
 <div class="price">
 de la <span>42</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -917,6 +1100,11 @@ de la <span>42</span> lei
 de la <span>85</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 <button class="buy-btn">Comandă</button>
 <button class="cart-btn">
@@ -942,6 +1130,11 @@ de la <span>85</span> lei
 
 <div class="price">
 de la <span>35</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -971,6 +1164,11 @@ de la <span>35</span> lei
 de la <span>5</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 <button class="buy-btn">Comandă</button>
 <button class="cart-btn">
@@ -996,6 +1194,11 @@ de la <span>5</span> lei
 
 <div class="price">
 de la <span>6</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -1025,6 +1228,11 @@ de la <span>6</span> lei
 de la <span>24</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 <button class="buy-btn">Comandă</button>
 <button class="cart-btn">
@@ -1050,6 +1258,11 @@ de la <span>24</span> lei
 
 <div class="price">
 de la <span>15</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -1079,6 +1292,11 @@ de la <span>15</span> lei
 de la <span>28</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 <button class="buy-btn">Comandă</button>
 <button class="cart-btn">
@@ -1104,6 +1322,11 @@ de la <span>28</span> lei
 
 <div class="price">
 de la <span>120</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -1133,6 +1356,11 @@ de la <span>120</span> lei
 de la <span>4</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 <button class="buy-btn">Comandă</button>
 <button class="cart-btn">
@@ -1160,6 +1388,11 @@ de la <span>4</span> lei
 de la <span>10</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 <button class="buy-btn">Comandă</button>
 <button class="cart-btn">
@@ -1181,10 +1414,15 @@ de la <span>10</span> lei
 
 <h3>Laptop Sleeve</h3>
 
-<p>Huse premium pentru laptop.</p>
+<p>Huses premium pentru laptop.</p>
 
 <div class="price">
 de la <span>49</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -1214,6 +1452,11 @@ de la <span>49</span> lei
 de la <span>18</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 <button class="buy-btn">Comandă</button>
 <button class="cart-btn">
@@ -1239,6 +1482,11 @@ de la <span>18</span> lei
 
 <div class="price">
 de la <span>2</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -1268,6 +1516,11 @@ de la <span>2</span> lei
 de la <span>32</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 <button class="buy-btn">Comandă</button>
 <button class="cart-btn">
@@ -1293,6 +1546,11 @@ de la <span>32</span> lei
 
 <div class="price">
 de la <span>95</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -1322,6 +1580,11 @@ TECH
 
 <div class="price">
 de la <span>19</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -1360,6 +1623,11 @@ PROMO
 de la <span>42</span> lei
 </div>
 
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
+</div>
+
 <div class="card-buttons">
 
 <button class="buy-btn">
@@ -1394,6 +1662,11 @@ TEXTIL
 
 <div class="price">
 de la <span>89</span> lei
+</div>
+
+<div class="card-qty-wrapper">
+    <label>Cantitate:</label>
+    <input type="number" class="card-qty-input" value="1" min="1">
 </div>
 
 <div class="card-buttons">
@@ -1459,6 +1732,18 @@ Finalizează Comanda
 <!-- OVERLAY -->
 
 <div class="cart-overlay" id="cartOverlay"></div>
+
+<!-- STRUCTURA MODALĂ NOTIFICARE COMANDĂ FINALIZATĂ -->
+<div class="custom-modal-overlay" id="customModalOverlay">
+    <div class="custom-modal">
+        <div class="custom-modal-icon" id="customModalIcon">
+            <i class="fas fa-check"></i>
+        </div>
+        <h2 id="customModalTitle">Succes!</h2>
+        <p id="customModalMessage">Comanda a fost finalizată cu succes! Vă mulțumim!</p>
+        <button class="custom-modal-btn" id="customModalCloseBtn">Închide</button>
+    </div>
+</div>
 
 <!-- FOOTER -->
 
@@ -1603,46 +1888,75 @@ closeCart.addEventListener("click", closeCartMenu);
 
 cartOverlay.addEventListener("click", closeCartMenu);
 
-/* ADD TO CART */
+/* UPGRADED: ADD TO CART LOGIC WITH DYNAMIC QUANTITY & FLYING ANIMATION */
 
-const addButtons =
-document.querySelectorAll(".cart-btn");
+function setupProductButtons(btnSelector) {
+    const buttons = document.querySelectorAll(btnSelector);
+    buttons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            const card = button.closest(".product-card");
+            const name = card.querySelector("h3").textContent;
+            const price = parseFloat(card.querySelector(".price span").textContent);
+            const image = card.querySelector("img").src;
+            
+            // Extragere cantitate din card
+            const qtyInput = card.querySelector(".card-qty-input");
+            const quantity = parseInt(qtyInput.value) || 1;
 
-addButtons.forEach(button => {
+            addToCartCustomQty(name, price, image, quantity);
 
-    button.addEventListener("click", () => {
+            // Resetare cantitate înapoi la 1
+            qtyInput.value = 1;
 
-        const card =
-        button.closest(".product-card");
+            // 1. Animație premium pe card (3D Pop & Glow)
+            card.classList.remove("product-card-active-anim");
+            void card.offsetWidth;
+            card.classList.add("product-card-active-anim");
+            setTimeout(() => card.classList.remove("product-card-active-anim"), 600);
 
-        const name =
-        card.querySelector("h3").textContent;
-
-        const price =
-        parseInt(
-            card.querySelector(".price span")
-            .textContent
-        );
-
-        const image =
-        card.querySelector("img").src;
-
-        addToCart(name,price,image);
-
+            // 2. Declanșare particulă zburătoare
+            createFlyingParticle(e);
+        });
     });
+}
 
-});
+// Mapăm ambele tipuri de butoane existente pe carduri
+setupProductButtons(".cart-btn");
+setupProductButtons(".buy-btn");
 
-/* FUNCTION */
+function createFlyingParticle(e) {
+    const particle = document.createElement("div");
+    particle.classList.add("flying-particle");
+    
+    particle.style.left = `${e.clientX - 12}px`;
+    particle.style.top = `${e.clientY - 12}px`;
+    document.body.appendChild(particle);
 
-function addToCart(name,price,image){
+    const cartBtnRect = openCart.getBoundingClientRect();
+    
+    void particle.offsetWidth;
+
+    particle.style.left = `${cartBtnRect.left + cartBtnRect.width / 2 - 12}px`;
+    particle.style.top = `${cartBtnRect.top + cartBtnRect.height / 2 - 12}px`;
+    particle.style.transform = "scale(0.2)";
+    particle.style.opacity = "0";
+
+    setTimeout(() => {
+        particle.remove();
+        openCart.classList.add("bump-animation");
+        setTimeout(() => openCart.classList.remove("bump-animation"), 300);
+    }, 600);
+}
+
+/* MODIFIED FUNCTION TO ACCEPT CUSTOM QUANTITY */
+function addToCartCustomQty(name, price, image, customQty){
 
     const existing =
     cart.find(item => item.name === name);
 
     if(existing){
 
-        existing.quantity++;
+        existing.quantity += customQty;
 
     }else{
 
@@ -1650,7 +1964,7 @@ function addToCart(name,price,image){
             name,
             price,
             image,
-            quantity:1
+            quantity: customQty
         });
 
     }
@@ -1659,11 +1973,12 @@ function addToCart(name,price,image){
 
 }
 
-/* UPDATE */
-/* =========================
-   ANIMATION TO CART
-========================= */
+/* ORIGINAL FALLBACK SAFE FUNCTION */
+function addToCart(name,price,image){
+    addToCartCustomQty(name, price, image, 1);
+}
 
+/* ANIMAȚIE ORIGINALĂ MENȚINUTĂ CONFORM REGULII DE STRUCTURĂ */
 function animateToCart(button){
 
     const productCard =
@@ -1673,7 +1988,7 @@ function animateToCart(button){
     productCard.querySelector("img");
 
     const cartIcon =
-    document.getElementById("cartIcon");
+    document.getElementById("openCart"); // Corectat selector intern pentru siguranță
 
     const imgClone =
     productImage.cloneNode(true);
@@ -1693,16 +2008,6 @@ function animateToCart(button){
         imgClone.remove();
 
     },1000);
-
-    /* CART SHAKE */
-
-    cartIcon.animate([
-        { transform:'scale(1)' },
-        { transform:'scale(1.25)' },
-        { transform:'scale(1)' }
-    ],{
-        duration:400
-    });
 
 }
 
@@ -1817,6 +2122,53 @@ function removeItem(index){
     updateCart();
 
 }
+
+/* =======================================
+    LOGICĂ MODALĂ NOTIFICĂRI PREMIUM
+======================================= */
+const customModalOverlay = document.getElementById("customModalOverlay");
+const customModalTitle = document.getElementById("customModalTitle");
+const customModalMessage = document.getElementById("customModalMessage");
+const customModalIcon = document.getElementById("customModalIcon");
+const customModalCloseBtn = document.getElementById("customModalCloseBtn");
+
+function showCustomModal(title, message, isSuccess) {
+    customModalTitle.textContent = title;
+    customModalMessage.textContent = message;
+    
+    if(isSuccess) {
+        customModalIcon.innerHTML = '<i class="fas fa-check"></i>';
+        customModalIcon.style.background = 'linear-gradient(45deg, #9333ea, #7e22ce)';
+    } else {
+        customModalIcon.innerHTML = '<i class="fas fa-exclamation"></i>';
+        customModalIcon.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
+    }
+    
+    customModalOverlay.classList.add("show");
+}
+
+customModalCloseBtn.addEventListener("click", () => {
+    customModalOverlay.classList.remove("show");
+});
+
+customModalOverlay.addEventListener("click", (e) => {
+    if(e.target === customModalOverlay) {
+        customModalOverlay.classList.remove("show");
+    }
+});
+
+/* INTERCEPTARE EVENIMENT CHECKOUT COȘ */
+const checkoutBtn = document.querySelector(".checkout-btn");
+checkoutBtn.addEventListener("click", () => {
+    if (cart.length > 0) {
+        showCustomModal("Comandă Trimisă!", "Comanda dumneavoastră a fost înregistrată și finalizată cu succes. Vă mulțumim!", true);
+        cart.length = 0;
+        updateCart();
+        closeCartMenu();
+    } else {
+        showCustomModal("Coșul este gol", "Vă rugăm să adăugați cel puțin un produs în coș înainte de a finaliza comanda.", false);
+    }
+});
 
 </script>
 
