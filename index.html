@@ -571,6 +571,7 @@ Vision Print
 <li><a href="#features">Funcționalități</a></li>
 <li><a href="produse.html">Produse</a></li>
 <li><a href="promotionale.html">Promoționale</a></li>
+<li><a href="custom.html">Personalizează</a></li>
 <li><a href="desprenoi.html">Despre noi</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
@@ -804,73 +805,7 @@ Salut 👋 Cu ce te pot ajuta astăzi?
 </div>
 
 </div>
-
-<script>
-
-function toggleChat(){
-
-    const chat = document.getElementById("chatWindow");
-
-    if(chat.style.display === "block"){
-        chat.style.display = "none";
-    }
-
-    else{
-        chat.style.display = "block";
-    }
-
-}
-
-function sendMessage(){
-
-    const input = document.getElementById("userInput");
-    const body = document.getElementById("chatBody");
-
-    if(input.value.trim() === "") return;
-
-    const userMessage = document.createElement("div");
-    userMessage.classList.add("message");
-    userMessage.innerHTML = "🧑 " + input.value;
-
-    body.appendChild(userMessage);
-
-    const text = input.value.toLowerCase();
-
-    let response = "✨ Mulțumim pentru mesaj!";
-
-    if(text.includes("pret")){
-        response = "💸 Prețurile diferă în funcție de produs și design.";
-    }
-
-    else if(text.includes("livrare")){
-        response = "🚚 Livrarea durează între 24 și 72 de ore.";
-    }
-
-    else if(text.includes("program")){
-        response = "🕒 Suntem disponibili 24/7 online.";
-    }
-
-    else if(text.includes("design")){
-        response = "🎨 Echipa noastră creează design-uri moderne și premium.";
-    }
-
-    setTimeout(()=>{
-
-        const botMessage = document.createElement("div");
-        botMessage.classList.add("message");
-        botMessage.innerHTML = response;
-
-        body.appendChild(botMessage);
-
-        body.scrollTop = body.scrollHeight;
-
-    },700);
-
-    input.value = "";
-
-}
-
-</script>
+c
 
 </body>
 </html>
